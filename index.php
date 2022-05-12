@@ -1,27 +1,35 @@
 <?php
+function sum_format(int $cost){
+    $cost=ceil($cost);
+    if($cost>=1000){
+        $cost = number_format($cost,0,"."," ");
+    }
+    return '<span class="lot__cost">'.$cost.'<b class="rub">₽</b></span>';
+}
 $is_auth = rand(0, 1);
-
-$user_name = 'Fool'; // укажите здесь ваше имя
+$user_name = 'Fool';
 $categories = array("Доски и лыжи", "Крепления", "Ботинки", "Одежда",
 "Инструменты", "Разное");
 $announcements = [
-    ['Name'=>'2014 Rossignol District Snowboard','Category'=>'Доски и лыжи','Cost1'=>'10999','Url'=>'img/lot-1.jpg'],
-    ['Name'=>'DC Ply Mens 2016/2017 Snowboard','Category'=>'Доски и лыжи','Cost1'=>'159999','Url'=>'img/lot-2.jpg'],
-    ['Name'=>'Крепления Union Contact Pro 2015 года размер L/XL','Category'=>'Крепления','Cost1'=>'8000','Url'=>'img/lot-3.jpg'],
-    ['Name'=>'Ботинки для сноуборда DC Mutiny Charocal','Category'=>'Ботинки','Cost1'=>'10999','Url'=>'img/lot-4.jpg'],
-    ['Name'=>'Куртка для сноуборда DC Mutiny Charocal','Category'=>'Одежда','Cost1'=>'7500','Url'=>'img/lot-5.jpg'],
-    ['Name'=>'Маска Oakley Canopy','Category'=>'Разное','Cost1'=>'5400','Url'=>'img/lot-6.jpg'],
+    ['Name'=>'2014 Rossignol District Snowboard','Category'=>'Доски и лыжи','Cost1'=>10999,'Url'=>'img/lot-1.jpg'],
+    ['Name'=>'DC Ply Mens 2016/2017 Snowboard','Category'=>'Доски и лыжи','Cost1'=>159999,'Url'=>'img/lot-2.jpg'],
+    ['Name'=>'Крепления Union Contact Pro 2015 года размер L/XL','Category'=>'Крепления','Cost1'=>8000,'Url'=>'img/lot-3.jpg'],
+    ['Name'=>'Ботинки для сноуборда DC Mutiny Charocal','Category'=>'Ботинки','Cost1'=>10999,'Url'=>'img/lot-4.jpg'],
+    ['Name'=>'Куртка для сноуборда DC Mutiny Charocal','Category'=>'Одежда','Cost1'=>7500,'Url'=>'img/lot-5.jpg'],
+    ['Name'=>'Маска Oakley Canopy','Category'=>'Разное','Cost1'=>5400,'Url'=>'img/lot-6.jpg'],
 ];
 ?>
 <!DOCTYPE html>
 <html lang="ru">
 <head>
+    <script src="flatpickr.js"></script>
+    <script src="script.js"></script>
     <meta charset="UTF-8">
     <title>Главная</title>
     <link href="../css/normalize.min.css" rel="stylesheet">
     <link href="../css/style.css" rel="stylesheet">
 </head>
-<body>
+<body onload="start()">
 <div class="page-wrapper">
 
 <header class="main-header">
@@ -95,7 +103,7 @@ $announcements = [
                     <div class="lot__state">
                         <div class="lot__rate">
                             <span class="lot__amount">Стартовая Цена</span>
-                            <span class="lot__cost"><?=$a['Cost1']?><b class="rub">р</b></span>
+                            <?=sum_format($a['Cost1']) ?>
                         </div>
                         <div class="lot__timer timer">
                             12:23
@@ -162,8 +170,5 @@ $announcements = [
         </div>
     </div>
 </footer>
-
-<script src="flatpickr.js"></script>
-<script src="script.js"></script>
 </body>
 </html>
