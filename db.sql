@@ -45,7 +45,7 @@ alter table announcement
     add foreign key (ID_winner) references  User(ID_user) ON DELETE CASCADE ON UPDATE CASCADE;
 alter table bet
   add foreign key (ID_user) references User(ID_user) ON DELETE CASCADE ON UPDATE CASCADE,
-    add foreign key (ID_announcement) references announcement(ID_announcements) ON DELETE CASCADE ON UPDATE CASCADE
+    add foreign key (ID_announcement) references announcement(ID_announcements) ON DELETE CASCADE ON UPDATE CASCADE;
 alter table user
   add foreign key (ID_announcement) references announcement(ID_announcements) ON DELETE CASCADE ON UPDATE CASCADE,
-    add foreign key (ID_bet) references bet(ID_bet)ON DELETE CASCADE ON UPDATE CASCADE
+    add foreign key (ID_bet) references bet(ID_bet)ON DELETE CASCADE ON UPDATE CASCADE;
