@@ -19,7 +19,8 @@ function Timer(){
   midnight.setSeconds(0);
   midnight.setMilliseconds(0);
   let diff = new Date(midnight-now);
-  let value = diff.getHours() + ":"+ diff.getMinutes();
+  let minutes = diff.getMinutes()>=10?diff.getMinutes():"0"+diff.getMinutes();
+  let value = diff.getHours() + ":"+ minutes;
   for(let element of elements) {
     element.innerHTML = value;
   }
