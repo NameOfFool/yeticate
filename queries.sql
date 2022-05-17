@@ -1,8 +1,10 @@
 insert into category (ID_category, Name) values
                                            (null,'Доски и лыжи'),
                                            (null,'крепления'),
-                                           (null,'ботинки'), (null,'одежда'),
-                                           (null,'инструменты'), (null,'разное');
+                                           (null,'ботинки'),
+                                           (null,'одежда'),
+                                           (null,'инструменты'),
+                                           (null,'разное');
 insert into user values(
                          Null,
                          '2002-12-28',
@@ -139,12 +141,12 @@ insert into announcement values(
 
 
 select * from category;
-select a.Name,
+select a.Name as Name,
        Start_cost,
-       Image,
-       (sum(b.Sum)+a.Start_cost)Последняя_ставка,
-       count(b.Sum)Количество_ставок,
-       c.Name,
+       a.Image,
+       (COALESCE(sum(b.Sum),0)+a.Start_cost) Cost,
+       count(b.Sum) Bets,
+       c.Name as Category,
        ID_winner
 from announcement as a
        left join bet b

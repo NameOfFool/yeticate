@@ -4,7 +4,7 @@
         <ul class="promo__list">
             <?php
             foreach($categories as $cat) {
-                ?><li class="promo__item <?=$cat['class']?>">
+                ?><li class="promo__item <?=$cat['Image']?>">
                 <a class="promo__link" href="pages/all-lots.html"><?=$cat['Name']?></a>
                 </li><?php
             }
@@ -21,7 +21,7 @@
             foreach ($announcements as $a){
                 ?><li class="lots__item lot">
                 <div class="lot__image">
-                    <img src="<?=$a['Url']?>" width="350" height="260" alt="">
+                    <img src="<?=$a['Image']?>" width="350" height="260" alt="">
                 </div>
                 <div class="lot__info">
                     <span class="lot__category"><?=$a["Category"]?></span>
@@ -29,7 +29,7 @@
                     <div class="lot__state">
                         <div class="lot__rate">
                             <span class="lot__amount">Стартовая Цена</span>
-                            <?=sum_format($a['Cost1']) ?>
+                            <?=sum_format($a['Start_cost']) ?>
                         </div>
                         <div class="lot__timer timer">
                             12:23
