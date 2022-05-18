@@ -2,11 +2,11 @@
 require_once "functions.php";
 $is_auth = rand(0, 1);
 $user_name = 'Fool';
-$connection = new mysqli('localhost','root','','yeticave_tikhonov');
+$connection = new mysqli('127.0.0.1','root','','yeticave_tikhonov');
 $query = "Select * from category order by ID_category";
 $category_result = $connection->query($query);
 $categories = $category_result->fetch_all(MYSQLI_ASSOC);
-$query = "select a.Name as Name,
+$query = "select ID_announcements as ID, a.Name as Name,
        Start_cost,
        a.Image,
        (COALESCE(sum(b.Sum),0)+a.Start_cost) Cost,
@@ -17,7 +17,7 @@ from announcement as a
        left join bet b
                  on a.ID_announcements = b.ID_announcement
        inner join category c on a.ID_category = c.ID_category
-group by a.Name, Start_cost, Image,Date_of_creating,ID_winner
+group by a.Name, Start_cost, Image,Date_of_creating,ID_winner,ID
 having ISNULL(ID_winner)
 order by Date_of_creating desc;";
 $announcements_result = $connection->query($query);
