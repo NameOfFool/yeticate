@@ -20,3 +20,14 @@ function sum_format(int $cost): string
     }
     return '<span class="lot__cost">'.$cost.'<b class="rub">₽</b></span>';
 }
+function connection(): mysqli
+{
+    return new mysqli('127.0.0.1','root','','yeticave_tikhonov');
+}
+function categories(mysqli $connection): array
+{
+    $query = "Select * from category order by ID_category";
+    $category_result = $connection->query($query);
+    return $category_result->fetch_all(MYSQLI_ASSOC);
+}
+

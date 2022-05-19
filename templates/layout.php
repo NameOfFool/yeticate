@@ -49,7 +49,18 @@
             </nav>
         </div>
     </header>
-<main class="container">
+<main>
+    <nav class="nav">
+        <ul class="nav__list container">
+            <?php
+            foreach($categories as $cat) {
+                ?><li class="nav__item">
+                <a href="pages/all-lots.html"><?=$cat['Name']?></a>
+                </li>
+            <?php }
+            ?>
+        </ul>
+    </nav>
 <?=$main?>
 </main>
 </div>

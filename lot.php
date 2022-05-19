@@ -3,10 +3,8 @@ require_once "functions.php";
 $is_auth = rand(0, 1);
 $user_name = 'Fool';
 $ID = $_GET['l'];
-$connection = new mysqli('127.0.0.1','root','','yeticave_tikhonov');
-$query = "Select * from category order by ID_category";
-$category_result = $connection->query($query);
-$categories = $category_result->fetch_all(MYSQLI_ASSOC);
+$connection = connection();
+$categories = categories($connection);
 $query = "select ID_announcements as ID, a.Name as Name,
        Start_cost,
        Description,
