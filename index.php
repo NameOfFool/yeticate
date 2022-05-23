@@ -1,7 +1,5 @@
 <?php
 require_once "functions.php";
-$is_auth = rand(0, 1);
-$user_name = 'Fool';
 $connection = connection();
 $categories = categories($connection);
 $query = "select ID_announcements as ID, a.Name as Name,
@@ -22,6 +20,6 @@ $announcements_result = $connection->query($query);
 $announcements = $announcements_result->fetch_all(1);
 $data_main = ['categories'=>$categories, 'announcements'=>$announcements];
 $main = include_path("index.php", $data_main);
-$data_layout = array_merge(['is_auth'=>$is_auth,'user_name'=>$user_name,'main'=>$main,'page_name'=>"Главная"],$data_main);
+$data_layout = array_merge(['main'=>$main,'page_name'=>"Главная"],$data_main);
 print include_path("layout.php",$data_layout);
 

@@ -268,12 +268,12 @@ main.container {
 .user-menu__logged a {
   color: #879296;
   font-size: 13px;
-  font-weight: 400;
+  font-weight: 700;
   float: left;
 }
 
 .user-menu__logged a:last-child {
-  margin-left: 20px;
+  margin-left: 0;
 }
 
 .user-menu__logged a:hover {

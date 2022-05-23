@@ -9,7 +9,13 @@
             <p class="lot-item__category">Категория: <span><?=$lot['Category']?></span></p>
             <p class="lot-item__description"><?=$lot['Description']?></p>
         </div>
+
         <div class="lot-item__right">
+            <?php
+            if($is_auth==1)
+            {
+
+            ?>
             <div class="lot-item__state">
                 <div class="lot-item__timer timer">
                     10:54
@@ -23,6 +29,7 @@
                         Мин. ставка <span><?=$lot['Min']?> р</span>
                     </div>
                 </div>
+
                 <form class="lot-item__form" action="https://echo.htmlacademy.ru" method="post" autocomplete="off">
                     <p class="lot-item__form-item form__item form__item--invalid">
                         <label for="cost">Ваша ставка</label>
@@ -32,6 +39,7 @@
                     <button type="submit" class="button">Сделать ставку</button>
                 </form>
             </div>
+            <?php } ?>
             <div class="history">
                 <h3>История ставок (<span><?=$lot['Bets']?></span>)</h3>
                 <table class="history__list">

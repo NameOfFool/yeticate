@@ -1,7 +1,5 @@
 <?php
 require_once "functions.php";
-$is_auth = rand(0, 1);
-$user_name = 'Fool';
 $ID = $_GET['l'];
 $connection = connection();
 $categories = categories($connection);
@@ -33,13 +31,13 @@ where b.ID_announcement=$ID";
     $bets = $bets_result->fetch_all(1);
     $data_main = ['categories' => $categories, 'lot' => $announcement, 'bets' => $bets];
     $main = include_path("lot.php", $data_main);
-    $data_layout = array_merge(['is_auth' => $is_auth, 'user_name' => $user_name, 'main' => $main, 'page_name' => $announcement['Name']], $data_main);
+    $data_layout = array_merge(['main' => $main, 'page_name' => $announcement['Name']], $data_main);
 }
 else
 {
     $data_main = ['categories' => $categories];
     $main = include_path("404.php", $data_main);
-    $data_layout = array_merge(['is_auth' => $is_auth, 'user_name' => $user_name, 'main' => $main, 'page_name' => "404"], $data_main);
+    $data_layout = array_merge(['main' => $main, 'page_name' => "404"], $data_main);
 }
 
 print include_path("layout.php",$data_layout);
