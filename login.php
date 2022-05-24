@@ -38,9 +38,8 @@ if($_SERVER['REQUEST_METHOD']=="POST")
     {
         $user_name = $user['user_name'];
         $avatar = $user['Avatar'];
-        session_start();
-        $_SESSION['user_name'] = $user_name;
-        $_SESSION['avatar'] = $avatar;
+        setcookie('user_name',$user_name);
+        setcookie('avatar', $avatar);
         header("location:index.php");
     }
     else

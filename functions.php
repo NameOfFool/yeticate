@@ -1,10 +1,9 @@
 <?php
-session_start();
 function include_path($name, $data): string
 {
-    $is_auth = isset($_SESSION['user_name']);
-    $user_name = $_SESSION['user_name']??"";
-    $avatar = $_SESSION['avatar']??"";
+    $is_auth = isset($_COOKIE['user_name']);
+    $user_name = $_COOKIE['user_name']??"";
+    $avatar = $_COOKIE['avatar']??"";
     $data['is_auth'] = $is_auth;
     $data['user_name']=$user_name;
     $data['avatar'] = $avatar;

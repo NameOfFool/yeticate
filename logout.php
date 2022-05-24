@@ -1,6 +1,6 @@
 <?php
 require_once "functions.php";
 session_start();
-$_SESSION=array();
+setcookie('user_name',"",-3600);
+setcookie('avatar',"",-3600);
 header("location:index.php");
-
