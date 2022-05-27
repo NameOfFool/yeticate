@@ -2,7 +2,7 @@
 require_once "functions.php";
 $connection = connection();
 $categories = categories($connection);
-if(!isset($_SESSION['user_name']))
+if(!isset($_COOKIE['user_name']))
 {
     $main_page = include_path('403.php',array());
     print_r(
@@ -67,6 +67,7 @@ else
             $to = "img/$name";
             $category = $_POST['category'];
             move_uploaded_file($_FILES['image']['tmp_name'], $to);
+            $user_name = $_POST['name'];
             $connection = connection();
             $query = "Insert into announcement
     (
@@ -95,7 +96,8 @@ values
      '" . $_POST['lot-rate'] . "',
      '" . $_POST['lot-date'] . "',
      '" . $_POST['lot-step'] . "'
-    );select ID_announcements from announcement where Name='" . $_POST['lot-name'] . "';";
+    );
+    select ID_announcements from announcement where Name='" . $_POST['lot-name'] . "';";
             $connection->multi_query($query);
             $connection->next_result();
             $result = $connection->store_result();
